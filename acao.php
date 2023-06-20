@@ -53,5 +53,29 @@ if($acao==2){
         die();
     
     }
+    elseif ($acao == 6) {
+        $sql = "SELECT senha FROM usuarios WHERE id = '$id_usuario'";
+        $conexao = new conexao();
+        $senhareal = $conexao->executar($sql);
+        $senhaantiga = $_POST["senha"];
+        $senhanova = $_POST["senhaN"];
+        $confirmarsenha = $_POST["senhaNC"];
+
+    
+        if ($senhanova != $confirmarsenha) {
+            header("location: trocasenha.php?acao=1");
+            die();
+        } elseif ($senhareal[0]['senha'] != $senhaantiga) {
+            header("location: trocasenha.php?acao=2");
+            die();
+        
+        } else {
+            $sql = "UPDATE usuarios SET senha = '$senhanova' WHERE id = '$id_usuario'";
+            $conexao->executar($sql);
+            header("location: trocasenha.php?acao=3");
+            die();
+        }
+    }
+    
     
 

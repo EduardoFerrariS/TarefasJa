@@ -61,6 +61,7 @@ function validarFormulario() {
   
     return validacao;
   }
+  
   function validarFormulario_tarefa() {
     var nometarefa = document.getElementById("nometarefa").value;
     var descricao = document.getElementById("descricao").value;
@@ -94,6 +95,5 @@ function validarFormulario() {
   
     return true;
   }
-  
-  
-  
+
+ 
